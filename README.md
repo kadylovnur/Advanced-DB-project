@@ -17,7 +17,6 @@ We named our project Realty, and hope it will be helpful and interesting.
 
 ##                                                           -------------------------- Phase 3 update -----------------------------
 ### Our database will contain `6` tables: `home`, `history`, `city`, `bigdate`, `type`, `users`
-![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/onaonaopyat'-ER.png)
 
 
 
@@ -55,3 +54,7 @@ As you can see from use case diagram, our project has functions as autorization,
 13. Show the video of homes with their information by grouping city having type "rent".
 14. Show the information of home with their type name, city name and video where the history action "Update".
 15. What is the address, phone number and video of home where room is bigger than 2 and type is "rent" city is "Kyzylorda"?
+
+ ##                                                 -------------------------- Phase 4 update -----------------------------
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/onaonaopyat'-ER.png)
+
