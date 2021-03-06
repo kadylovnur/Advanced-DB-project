@@ -1,6 +1,6 @@
 .open C:\sqlite
-.mode ”csv”
-.separator ”,”
+.mode "csv"
+.separator ","
 .import home.csv
 .import city.csv
 .import types.csv
