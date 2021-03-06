@@ -1,4 +1,4 @@
-.open C:\sqlite
+.open c:/sqlite/realty.db
 .mode "csv"
 .separator ","
 .import home.csv
