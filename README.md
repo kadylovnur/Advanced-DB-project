@@ -17,7 +17,7 @@ We named our project Realty, and hope it will be helpful and interesting.
 
 ##                                                           -------------------------- Phase 3 update -----------------------------
 ### Our database will contain `6` tables: `home`, `history`, `city`, `bigdate`, `type`, `users`
-![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/umld.png)
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/onaonaopyat'-ER.png)
 
 
 
