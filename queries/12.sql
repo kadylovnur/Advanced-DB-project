@@ -1,0 +1,2 @@
+--Show the user advertisements by their type name and city name where user name is "Anna".
+Select t1.name, t3.cityname, t4.type_name, t2.address, t2.area, t2.rooms, t2.description, t2.cost, t2.floor, t5.blb from users t1, home t2, city t3, type t4, bigdate t5 where t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.name like '%Anna%';
