@@ -1,0 +1,2 @@
+--Show the information of home with their type name, city name and video where the history action "Update".
+Select t1.action, t3.cityname, t4.type_name, t2.address, t2.area, t2.rooms, t2.description, t2.cost, t2.floor, t5.blb from history t1, home t2, city t3, type t4, bigdate t5 where t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.action in ('Update');

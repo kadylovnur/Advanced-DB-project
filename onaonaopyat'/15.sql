@@ -1,0 +1,2 @@
+--What is the address, phone number and video of home where room is bigger than 2 and type is "rent" city is "Kyzylorda"?
+Select t1.login, t2.address, t5.blb from users t1, home t2, city t3, type t4, bigdate t5 where t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t2.rooms > 2 and t4.type_name in ('rent') and t3.city_name in ('Kyzylorda');
