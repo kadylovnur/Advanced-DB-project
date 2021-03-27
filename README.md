@@ -60,3 +60,5 @@ As you can see from use case diagram, our project has functions as autorization,
 
  ##                                                 -------------------------- Phase 5 update -----------------------------
  https://github.com/kadylovnur/Advanced-DB-project/tree/main/onaonaopyat'
+
+upd: seems like github do not properly see link above because of the sign in the end, so [USE THIS AS LINK](https://github.com/kadylovnur/Advanced-DB-project/tree/main/onaonaopyat')
