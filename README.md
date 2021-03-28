@@ -66,15 +66,21 @@ upd: seems like github do not properly see link above because of the sign in the
 ##                                                 -------------------------- Phase 6 update -----------------------------
 We have created web site using `Bootstrap`+Html+CSS+JS for frontend and `PHP` for backend
 ![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/code.png)
-this is the one of the examples from our code snippets inside project
-https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%201.png
-![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%201.png)
-![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%202.png)
-![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/main2.png)
+`This is the one of the examples how we manipulated database using php inside the project`
+### Here goes the main page, where all houses can be viewed
 ![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/mainn.png)
+
+### Unfortunately we was not able to find proper addresses, so we generated address data and description, so it seems a little weird.
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/main2.png)
+### By pressing the card with house, you will see more information about it
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%201.png)
+### And the main part, video, what was the main reason of our project
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%202.png)
+
+
 above is the screenshots from the project
 
-below is the sourse code
+##below is the sourse code
 https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20main.zip
 
 
