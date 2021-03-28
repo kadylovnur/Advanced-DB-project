@@ -62,3 +62,19 @@ As you can see from use case diagram, our project has functions as autorization,
  https://github.com/kadylovnur/Advanced-DB-project/tree/main/onaonaopyat'
 
 upd: seems like github do not properly see link above because of the sign in the end, so [USE THIS AS LINK](https://github.com/kadylovnur/Advanced-DB-project/tree/main/onaonaopyat')
+
+##                                                 -------------------------- Phase 6 update -----------------------------
+We have created web site using `Bootstrap`+Html+CSS+JS for frontend and `PHP` for backend
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/code.png)
+this is the one of the examples from our code snippets inside project
+https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%201.png
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%201.png)
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/house%202.png)
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/main2.png)
+![uml](https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20photos/mainn.png)
+above is the screenshots from the project
+
+below is the sourse code
+https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20main.zip
+
+
