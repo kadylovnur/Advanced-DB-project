@@ -84,3 +84,5 @@ above is the screenshots from the project
 https://github.com/kadylovnur/Advanced-DB-project/blob/main/realty%20main.zip
 
 
+##                                                 -------------------------- Phase 7 update -----------------------------
+### Queries and their RA expressions : https://github.com/kadylovnur/Advanced-DB-project/tree/main/onaonaopyat_phase7
