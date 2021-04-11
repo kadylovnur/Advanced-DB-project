@@ -55,4 +55,19 @@ select distinct typeID from home;--3
 select distinct blb_id from bigdata;--50
 select distinct blb_id from home;--50
 
+----5----
 
+select count(*)
+from bigdata t1 JOIN(home t2 JOIN types t3 ON t2.typeID = t3.typeId and type_name = "New Building")
+ON t1.blb_id = t2.blb_id;
+0.006133556365966797 seconds
+
+select count(*)
+from home t2 JOIN(bigdata t1 JOIN types t3 ON type_name = "New Building")
+ON t2.typeID = t3.typeId and t1.blb_id = t2.blb_id;
+0.03163790702819824 seconds
+
+select count(*)
+from types t3 JOIN(bigdata t1 JOIN home t2 ON t1.blb_id = t2.blb_id)
+ON type_name = "New Building" and t2.typeID = t3.typeId;
+0.012476682662963867 seconds
