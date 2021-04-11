@@ -69,18 +69,19 @@ select distinct login from users;--8000
 select distinct login from home;--5096
 
 ----5----
+SELECT count(*)
+from users t1 JOIN(home t2  JOIN city t3 JOIN types t4 JOIN bigdata t5 ON t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id) 
+ON t1.name like '%Dana%' AND t1.login = t2.login;
+0.01977992057800293 seconds
 
-select count(*)
-from bigdata t1 JOIN(home t2 JOIN types t3 ON t2.typeID = t3.typeId and type_name = "New Building")
-ON t1.blb_id = t2.blb_id;
-0.006133556365966797 seconds
+SELECT COUNT(*)
+FROM home t2 JOIN(users t1 JOIN city t3 JOIN types t4 JOIN bigdata t5 ON t1.name like '%Dana%')
+ ON t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id;
+ 0.06688761711120605 seconds
 
-select count(*)
-from home t2 JOIN(bigdata t1 JOIN types t3 ON type_name = "New Building")
-ON t2.typeID = t3.typeId and t1.blb_id = t2.blb_id;
-0.03163790702819824 seconds
+SELECT COUNT(*)
+FROM city t3 JOIN(users t1 JOIN home t2 JOIN types t4 JOIN bigdata t5 
+ON t1.login = t2.login and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.name like '%Dana%') 
+ON t2.cityID = t3.cityID;
 
-select count(*)
-from types t3 JOIN(bigdata t1 JOIN home t2 ON t1.blb_id = t2.blb_id)
-ON type_name = "New Building" and t2.typeID = t3.typeId;
-0.012476682662963867 seconds
+ 0.0759131908416748 seconds
