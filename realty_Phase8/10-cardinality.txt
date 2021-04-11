@@ -1,0 +1,100 @@
+-- step 1
+select count(*) from BigData b, types t, home h, users u, city c
+where h.typeID = t.typeId 
+and type_name = 'New building' 
+and h.cityID = c.cityId 
+and h.login = u.login 
+and h.blb_id = b.blb_id 
+and c.cityName = 'Nur-Sultan';
+
+-- step 2
+select count(*) 
+from BigData b JOIN (types t JOIN home h on h.typeID = t.typeId  and type_name = 'New building' 
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId and cityName = 'Nur-Sultan') 
+on h.blb_id = b.blb_id;
+
+select count(*) 
+from types t JOIN (BigData b JOIN home h on h.blb_id = b.blb_id 
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId and cityName = 'Nur-Sultan' ) 
+on h.typeID = t.typeId and type_name = 'New building';
+
+select count(*) 
+from city c JOIN (types t JOIN home h on h.typeID = t.typeId and type_name = 'New building' 
+JOIN users u on h.login = u.login 
+JOIN BigData b on h.blb_id = b.blb_id) 
+on h.cityID = c.cityId and cityName = 'Nur-Sultan';
+ 
+
+-- step 3
+
+-- select count(*) from types t, home h, users u, city c where h.typeID = t.typeId  and type_name = 'New building' and h.cityID = c.cityId and h.login = u.login and c.cityName = 'Nur-Sultan';
+-- select count(*) from BigData b, home h, users u, city c where h.cityID = c.cityId and h.login = u.login and h.blb_id = b.blb_id and c.cityName = 'Nur-Sultan';
+-- select count(*) from BigData b, types t, home h, users u where h.typeID = t.typeId and type_name = 'New building' and h.login = u.login and h.blb_id = b.blb_id ;
+
+(types ⋈ home ⋈ users ⋈ city) ⋈ BigData (921 + 921 = 1842 tuples)
+(BigData ⋈ home ⋈ users ⋈ city) ⋈ types (2725 + 921 = 3646 tuples)
+(BigData ⋈ types ⋈ home ⋈ users) ⋈ city (2695 + 921 = 3616 tuples)
+
+-- step 4
+select count(*) 
+from BigData b JOIN (types t JOIN home h on h.typeID = t.typeId  
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId) 
+on h.blb_id = b.blb_id;
+|T’| ≈ (3 * 8000 * 8000 * 3 * 50) / (3 * 7998 * 3 * 50) = 8002 tuples
+
+select count(*) 
+from types t JOIN (BigData b JOIN home h on h.blb_id = b.blb_id 
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId) 
+on h.typeID = t.typeId ;
+|T’| ≈ (50 * 8000 * 8000 * 3 * 3) / (50 * 7998 * 3 * 3) = 8002 tuples
+
+select count(*) 
+from city c JOIN (types t JOIN home h on h.typeID = t.typeId  
+JOIN users u on h.login = u.login 
+JOIN BigData b on h.blb_id = b.blb_id) 
+on h.cityID = c.cityId and cityName = 'Nur-Sultan';
+|T’| ≈ (3 * 8000 * 8000 * 50 * 3) / (3 * 7998 * 50 * 3) = 8002 tuples
+
+-- SELECT * FROM BigData; -- 50
+-- SELECT * FROM types; -- 3
+-- SELECT * FROM home; -- 8000
+-- SELECT * FROM users; -- 8000
+-- SELECT * FROM city; -- 3
+
+-- SELECT DISTINCT login FROM home; --5096
+-- SELECT DISTINCT login FROM users; --7998
+
+-- SELECT DISTINCT cityID FROM home; --3
+-- SELECT DISTINCT cityID FROM city; --3
+
+-- SELECT DISTINCT typeID FROM home; --3
+-- SELECT DISTINCT typeID FROM types; --3
+
+-- SELECT DISTINCT blb_id FROM home; --50
+-- SELECT DISTINCT blb_id FROM BigData; --50
+
+-- step 5
+select count(*) 
+from BigData b JOIN (types t JOIN home h on h.typeID = t.typeId  and type_name = 'New building' 
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId and cityName = 'Nur-Sultan') 
+on h.blb_id = b.blb_id;
+0.17399191856384277 seconds
+
+select count(*) 
+from types t JOIN (BigData b JOIN home h on h.blb_id = b.blb_id 
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId and cityName = 'Nur-Sultan' ) 
+on h.typeID = t.typeId and type_name = 'New building';
+0.16203570365905762 seconds
+
+select count(*) 
+from city c JOIN (types t JOIN home h on h.typeID = t.typeId and type_name = 'New building' 
+JOIN users u on h.login = u.login 
+JOIN BigData b on h.blb_id = b.blb_id) 
+on h.cityID = c.cityId and cityName = 'Nur-Sultan';
+0.1794579029083252 seconds
