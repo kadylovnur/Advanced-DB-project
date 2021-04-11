@@ -1,0 +1,70 @@
+Select COUNT(*)
+from users t1, home t2, city t3, types t4, bigdata t5 
+where t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.name like '%Dana%';
+
+----2----
+SELECT count(*)
+from users t1 JOIN(home t2  JOIN city t3 JOIN types t4 JOIN bigdata t5 ON t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id) 
+ON t1.name like '%Dana%' AND t1.login = t2.login;
+
+SELECT COUNT(*)
+FROM home t2 JOIN(users t1 JOIN city t3 JOIN types t4 JOIN bigdata t5 ON t1.name like '%Dana%')
+ ON t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id;
+
+SELECT COUNT(*)
+FROM city t3 JOIN(users t1 JOIN home t2 JOIN types t4 JOIN bigdata t5 
+ON t1.login = t2.login and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.name like '%Dana%') 
+ON t2.cityID = t3.cityID;
+
+----3----
+SELECT count(*)
+from home t2, city t3, types t4, bigdata t5
+WHERE t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id;
+
+SELECT COUNT(*)
+FROM  users t1, city t3, types t4, bigdata t5
+WHERE t1.name like '%Dana%';
+
+
+SELECT COUNT(*)
+FROM users t1, home t2, types t4, bigdata t5
+WHERE t1.login = t2.login and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.name like '%Dana%';
+
+
+
+(home ⋈ city ⋈ types ⋈ bigdata) ⋈ users= 8000 + 578 = 8578
+(users ⋈ city ⋈ types ⋈ bigdata) ⋈ home = 253800 + 578 =254378 
+(users ⋈ home ⋈ types ⋈ bigdata) ⋈ ciity = 578 + 578 = 1156
+
+----4----
+SELECT count(*)
+from users t1 JOIN(home t2  JOIN city t3 JOIN types t4 JOIN bigdata t5 ON t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id) 
+ON t1.name like '%Dana%' AND t1.login = t2.login;
+
+|T’| ≈(8000 * 3 * 8000 * 3 * 50)/ (3 * 3 * 50 * 8000) = 8000 tuples
+
+SELECT COUNT(*)
+FROM city t3 JOIN(users t1 JOIN home t2 JOIN types t4 JOIN bigdata t5 
+ON t1.login = t2.login and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.name like '%Dana%') 
+ON t2.cityID = t3.cityID; 
+
+|T’| ≈(8000 * 3 * 8000 * 3 * 50)/ (3 * 3 * 50 * 8000) = 8000 tuples
+
+select * from home;---8000
+select * from city;--3
+select * from users;--8000
+select * from types;--3
+select * from bigdata;--50
+
+select distinct cityId from home;--3
+select distinct cityID from city;--3
+
+select distinct typeId from types;--3
+select distinct typeID from home;--3
+
+select distinct blb_id from bigdata;--50
+select distinct blb_id from home;--50
+
+select distinct login from users;--8000
+select distinct login from home;--5096
+
