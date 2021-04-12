@@ -1,0 +1,35 @@
+--Query
+Select count(*) from users t1, home t2, city t3, types t4, bigdata t5 where t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t2.rooms > 2 and t4.type_name in ('Secondary') and t3.cityName in ('Kyzylorda');
+
+
+--part 2
+select count(*) from users join (home join city on home.cityID = city.cityid  join types on types.typeId = home.typeID join bigdata on BigData.blb_id = home.blb_id)on users.login = home.login and home.rooms > 2 and type_name = 'Secondary' and city.cityname = 'Kyzylorda'
+
+
+select count(*) from city join (home join users on home.login = users.login  join types on types.typeid = home.typeID join BigData on bigdata.blb_id = home.blb_id)on home.cityID = city.cityid and home.rooms > 2 and type_name = 'Secondary' and cityName = 'Kyzylorda'
+
+
+select count(*) from types join(home join BigData on home.blb_id = BigData.blb_id  join users on users.login = home.login join city on city.cityid = home.cityId) on home.typeID = types.typeId and home.rooms > 2 and type_name = 'Secondary' and cityName = 'Kyzylorda'    
+
+--part 3
+select count(*) from home,city, types, bigdata where home.cityid = city.cityid and types.typeid = home.typeID and BigData.blb_id = home.blb_id and home.rooms > 2 and type_name = 'Secondary' and city.cityname = 'Kyzylorda'
+
+
+(home ⋈ city ⋈ types ⋈ bigdata ) ⋈ users  = 686 + 688 =  1374
+
+select count(*) from home, users, types, bigdata where types.typeid = home.typeID and BigData.blb_id = home.blb_id and home.login = users.login and home.rooms > 2 and type_name = 'Secondary' 
+
+(home ⋈ users ⋈ types ⋈ bigdata ) ⋈ city = 2073 + 688 = 2761
+
+
+select count(*) from home, bigdata, city , users   where BigData.blb_id = home.blb_id and home.login = users.login and home.cityid = city.cityid and city.cityname = 'Kyzylorda'
+
+(home ⋈ bigdata ⋈ city ⋈ users ) ⋈ types  = 2662+ 688 = 3350
+
+----------------------------------------------------------------------
+Fastest is :
+select count(*) from users join (home join city on home.cityID = city.cityid  join types on types.typeId = home.typeID join bigdata on BigData.blb_id = home.blb_id)on users.login = home.login and home.rooms > 2 and type_name = 'Secondary' and city.cityname = 'Kyzylorda'
+
+
+
+
