@@ -1,0 +1,42 @@
+select count(*) 
+from BigData b JOIN (types t JOIN home h on h.typeID = t.typeId  
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId and cityName = 'Nur-Sultan' ) 
+on h.blb_id = b.blb_id;
+33.52856636047363 ms
+37.02092170715332 ms
+32.88078308105469 ms
+28.921127319335938 ms
+36.55648231506348 ms
+
+
+(33.52856636047363 + 37.02092170715332 + 32.88078308105469 + 28.921127319335938 + 36.55648231506348) / 5 = 33.7815761566
+
+
+select count(*) 
+from types t JOIN (BigData b JOIN home h on h.blb_id = b.blb_id 
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId and cityName = 'Nur-Sultan' ) 
+on h.typeID = t.typeId ;
+29.458999633789062 ms
+34.05618667602539 ms
+39.85118865966797 ms
+31.68225288391113 ms
+39.20722007751465 ms
+
+
+(29.458999633789062 + 34.05618667602539 + 39.85118865966797 + 31.68225288391113 + 39.20722007751465) / 5 = 34.8511695862
+
+
+select count(*) 
+from city c JOIN (types t JOIN home h on h.typeID = t.typeId  
+JOIN users u on h.login = u.login 
+JOIN BigData b on h.blb_id = b.blb_id) 
+on h.cityID = c.cityId and cityName = 'Nur-Sultan';
+30.686378479003906 ms
+34.94858741760254 ms
+36.13638877868652 ms
+35.91465950012207 ms
+35.85553169250488 ms
+
+(30.686378479003906 + 34.94858741760254 + 36.13638877868652 + 35.91465950012207 + 35.85553169250488) / 5 = 34.7083091736

@@ -1,0 +1,42 @@
+select count(*) 
+from BigData b JOIN (types t JOIN home h on h.typeID = t.typeId
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId)
+on h.blb_id = b.blb_id;
+146.70586585998535 ms
+161.20290756225586 ms
+166.1691665649414 ms
+190.29664993286133 ms
+169.9354648590088 ms
+
+
+(146.70586585998535 + 161.20290756225586 + 166.1691665649414 + 190.29664993286133 + 169.9354648590088) / 5 = 166.862010956
+
+
+select count(*) 
+from types t JOIN (BigData b JOIN home h on h.blb_id = b.blb_id 
+JOIN users u on h.login = u.login 
+JOIN city c on h.cityID = c.cityId) 
+on h.typeID = t.typeId;
+204.47444915771484 ms
+166.57161712646484 ms
+163.97857666015625 ms
+198.64487648010254 ms
+156.93163871765137 ms
+
+
+(204.47444915771484 + 166.57161712646484 + 163.97857666015625 + 198.64487648010254 + 156.93163871765137) / 5 = 178.120231628
+
+
+select count(*) 
+from city c JOIN (types t JOIN home h on h.typeID = t.typeId
+JOIN users u on h.login = u.login 
+JOIN BigData b on h.blb_id = b.blb_id) 
+on h.cityID = c.cityId;
+160.29715538024902 ms
+179.3520450592041 ms
+150.0706672668457 ms
+181.37216567993164 ms
+188.431978225708 ms
+
+(160.29715538024902 + 179.3520450592041 + 150.0706672668457 + 181.37216567993164 + 188.431978225708) / 5 = 171.904802322
