@@ -1,0 +1,40 @@
+Select count(*) from users t1, home t2, city t3, types t4, bigdata t5 where t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t2.rooms > 2 and t4.type_name in ('Secondary') and t3.cityName in ('Kyzylorda');
+
+1.55.00674247741699 milliseconds
+2. 67.01135635375977 millicesconds
+3. 70.9993839263916 milliseconds
+4. 64.02277946472168 milliseconds
+5. 60.980796813964844 milliseconds
+
+average = 63.2
+
+
+
+select count(*) from users join (home join city on home.cityID = city.cityid  join types on types.typeId = home.typeID join bigdata on BigData.blb_id = home.blb_id)on users.login = home.login and home.rooms > 2 and type_name = 'Secondary' and city.cityname = 'Kyzylorda'
+1.64.99338150024414 milliseconds
+2.74.10979270935059 milliseconds
+3.71.00152969360352 milliseconds
+4. 77.00157165527344 milliseconds
+5. 82.0004940032959 milliseconds
+
+average = 60.48
+
+select count(*) from city join (home join users on home.login = users.login  join types on types.typeid = home.typeID join BigData on bigdata.blb_id = home.blb_id)on home.cityID = city.cityid and home.rooms > 2 and type_name = 'Secondary' and cityName = 'Kyzylorda'
+1.66.99538230895996 milliseconds
+2.49.15046691894531 milliseconds
+3.47.032833099365234 milliseconds
+4.74.14531707763672 milliseconds
+80.03401756286621 milliseconds
+
+average = 63.2
+
+
+select count(*) from types join(home join BigData on home.blb_id = BigData.blb_id  join users on users.login = home.login join city on city.cityid = home.cityId) on home.typeID = types.typeId and home.rooms > 2 and type_name = 'Secondary' and cityName = 'Kyzylorda'    
+
+46.001434326171875 milliseconds
+47.96767234802246 milliseconds
+50.93717575073242 milliseconds
+ 60.006141662597656 milliseconds
+ 49.98135566711426 milliseconds
+ 
+ average = 50.4
