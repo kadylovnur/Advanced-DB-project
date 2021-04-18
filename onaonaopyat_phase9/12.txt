@@ -1,0 +1,35 @@
+SELECT count(*)
+from users t1 JOIN(home t2  JOIN city t3 JOIN types t4 JOIN bigdata t5 ON t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id) 
+ON t1.name like '%Dana%' AND t1.login = t2.login;
+19,77992057800293 
+61,612606048583984 
+25,582551956176758 
+26,631832122802734 
+25,000333786010742 
+
+
+158,607244491577148/5 = 31,7214488983154296
+----------------------------------------------------------------------------------------------------------------------
+SELECT COUNT(*)
+FROM home t2 JOIN(users t1 JOIN city t3 JOIN types t4 JOIN bigdata t5 ON t1.name like '%Dana%')
+ON t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id;
+66,88761711120605 
+24,370193481445312 
+27,799606323242188 
+27,42600440979004 
+24,229049682617188 
+
+
+170,712471008300778/5 = 34,1424942016601556
+----------------------------------------------------------------------------------------------------------------------
+SELECT COUNT(*)
+FROM city t3 JOIN(users t1 JOIN home t2 JOIN types t4 JOIN bigdata t5 
+ON t1.login = t2.login and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.name like '%Dana%') 
+ON t2.cityID = t3.cityID;
+27,03714370727539 
+75,9131908416748 
+23,936033248901367 
+25,255203247070312 
+23,957252502441406 
+
+176,098823547363275/5 = 35,219764709472655
