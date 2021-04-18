@@ -1,0 +1,47 @@
+Select t1.action, t3.cityname, t4.type_name, t2.address, t2.area, t2.rooms, t2.description, t2.cost, t2.floor, t5.blb 
+from history t1, home t2, city t3, types t4, bigdata t5
+ where t1.login = t2.login and t2.cityID = t3.cityID and t2.typeID = t4.typeID and t2.blb_id = t5.blb_id and t1.action in ('Update');
+
+
+
+32.97734260559082 milliseconds
+28.939485549926758 milliseconds
+31.18300437927246 milliseconds
+ 45.08066177368164 milliseconds
+24.00064468383789 milliseconds
+
+
+average = 32
+
+
+select count(*) from history join ( home join city on home.cityID = city.cityId  join types on home.typeID = types.typeId join BigData on home.blb_id = BigData.blb_id)on history.homeId = home.homeId and history.action in ("Update");
+
+27.01878547668457 milliseconds
+34.029245376586914 milliseconds
+29.97422218322754 milliseconds
+27.019977569580078 milliseconds
+23.927927017211914 milliseconds
+
+
+average = 28
+
+
+select count(*) from BigData join( home join city on home.cityID = city.cityId  join types on home.typeID = type.typeId join history on home.homeId = history.homeId) on history.homeId = home.homeId and history.action in ("Update");
+
+
+31.009197235107422 milliseconds
+ 27.036190032958984 milliseconds
+28.899669647216797 milliseconds
+35.999298095703125 milliseconds
+27.970552444458008 milliseconds
+
+average = 29.6
+
+select count(*) from types join(home join BigData on home.blb_id = BigData.blb_id  join users on users.login = home.login join city on city.cityid = home.cityId) on home.typeID = types.typeId and home.rooms > 2 and type_name = 'Secondary' and cityName = 'Kyzylorda'    
+50.12369155883789 milliseconds
+28.998374938964844 milliseconds
+28.985977172851562 milliseconds
+28.99956703186035 milliseconds
+28.035402297973633 milliseconds
+
+average = 27.9
